@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xuân Quí's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#3b82f6',
+                            dark: '#2563eb'
+                        },
+                        secondary: {
+                            light: '#10b981',
+                            dark: '#059669'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s easpree-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .light .gradient-text {
+            background-image: linear-gradient(45deg, #3b82f6, #10b981);
+        }
+        .dark .gradient-text {
+            background-image: linear-gradient(45deg, #60a5fa, #34d399);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="light bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Thanh Điều Hướng -->
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold gradient-text">GHI LẠI</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Bắt Đầu</a>
+                    <a href="#about" class="nav-link">Về Mình</a>
+                    <a href="#projects" class="nav-link">Những Kỉ Niệm</a>
+                    <a href="#skills" class="nav-link">Vài Điều Nhỏ</a>
+                    <a href="#contact" class="nav-link">Kết Nối</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Menu Di Động -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Bắt Đầu</a>
+                <a href="#about" class="nav-link">Về Mình</a>
+                <a href="#projects" class="nav-link">Những Kỉ Niệm</a>
+                <a href="#skills" class="nav-link">Vài Điều Nhỏ</a>
+                <a href="#contact" class="nav-link">Kết Nối</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Phần Giới Thiệu -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Xin chào, mình là <span class="gradient-text">Xuân Quí
+                    </span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Là học sinh lớp 12</h2>
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">Đây là website cá nhân, nơi mình giới thiệu bản thân và những điều đang đồng hành cùng mình ở hiện tại
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity">
+                            Kết Nối Với Mình
+                        </a>
+                        <a href="#projects" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            Xem Dự Án
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-slide-up">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-light dark:border-primary-dark">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Ảnh đại diện" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary-light dark:bg-primary-dark opacity-10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Giới Thiệu Bản Thân -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Về <span class="gradient-text">Mình</span></h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Giới thiệu" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Mình Là Ai?</h3>
+                    <p class="mb-6 text-gray-600 dark:text-gray-300">
+                        Mình là Xuân Quí, mình vừa tròn 18 tuổi vào 01/02/2026.
+                        <br>
+                        Mình trân trọng những điều giản dị, những mối quan hệ xung quanh và luôn cố gắng hoàn thiện bản thân mỗi ngày.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                    <i class="fas fa-graduation-cap text-primary-light dark:text-primary-dark"></i>
+                                </div>
+                                <h4 class="font-semibold">Hiện Tại</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Mình tập trung vào việc học tập và chuẩn bị cho các kỳ thi quan trọng sắp tới, đặc biệt là kỳ thi tốt nghiệp THPT QG 2026
+                                
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-secondary-light/10 dark:bg-secondary-dark/10 mr-4">
+                                    <i class="fas fa-briefcase text-secondary-light dark:text-secondary-dark"></i>
+                                </div>
+                                <h4 class="font-semibold">Học Vấn</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Học sinh lớp 12A1<br>
+                                Trường THPT Số 2 Phù Cát
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Dự Án -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Những Kỉ Niệm <span class="gradient-text">Của Mình</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dự Án 1 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Dự Án 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">10A1- Những bỡ ngỡ ban đầu</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Những lần đầu cùng lớp- mọi thứ đều mới và chưa thực sự quen.
+                        </p>
+                        <!-- <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Xem Demo</a>
+                            <a href="#" class="text-gray-500 hover:underline">Mã Nguồn</a>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- Dự Án 2 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Dự Án 2" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">11A1- Khi mọi thứ dần quen</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Những buổi học, phong trào, và khoảng thời gian gắn bó hơn với tập thể.
+                        </p>
+                        <!-- <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Firebase</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">TailwindCSS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Xem Demo</a>
+                            <a href="#" class="text-gray-500 hover:underline">Mã Nguồn</a>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- Dự Án 3 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+                             alt="Dự Án 3" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">12A1- Những ngày cuối cấp</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Những dấu mốc cuối cùng của năm học trước khi mỗi người bước sang chặng đường mới.
+                        </p>
+                        <!-- <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Tích hợp API</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">CSS3</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Xem Demo</a>
+                            <a href="#" class="text-gray-500 hover:underline">Mã Nguồn</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors inline-flex items-center">
+                    Xem Chi Tiết <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Kỹ Năng -->
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Một Vài <span class="gradient-text">Điều Nhỏ</span></h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Kỹ năng 1 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-react text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2"> Biết lắng nghe hơn</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Kỹ năng 2 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-js text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Hòa nhập cùng mọi người </h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <!-- Kỹ năng 3 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-vuejs text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Tự điều chỉnh bản thân</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <!-- Kỹ năng 4 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-css3-alt text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Có trách nhiệm hơn</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Kỹ năng 5 -->
+                <!-- <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fab fa-node-js text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Node.js</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div> -->
+                
+                <!-- Kỹ năng 6 -->
+                <!-- <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fas fa-database text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">MongoDB</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div> -->
+                
+                <!-- Kỹ năng 7 -->
+                <!-- <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fab fa-git-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Git</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div> -->
+                
+                <!-- Kỹ năng 8 -->
+                <!-- <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fas fa-mobile-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Thiết Kế Responsive</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Liên Hệ -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Kết Nối <span class="gradient-text">Với Mình</span></h2>
+            
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="mb-8 text-gray-600 dark:text-gray-300">
+                    Đây là nơi mình chia sẻ vài thông tin cơ bản để giữ liên lạc với thầy cô và các bạn.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                        <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-envelope text-primary-light dark:text-primary-dark"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Email</h4>
+                        <p class="text-gray-600 dark:text-gray-300">xuanquii27@gmail.com</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                        <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-phone-alt text-primary-light dark:text-primary-dark"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Số Điện Thoại</h4>
+                        <p class="text-gray-600 dark:text-gray-300">+84 3451***89</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                        <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-primary-light dark:text-primary-dark"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Nơi Học Tập</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Trường THPT Số 2 Phù Cát</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Theo Dõi Mình</h4>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chân Trang -->
+    <!-- <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">© 2023 Bản Quyền Được Bảo Lưu</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="nav-link">Bắt Đầu</a>
+                    <a href="#about" class="nav-link">Về Mình</a>
+                    <a href="#projects" class="nav-link">Những Kỷ Niệm</a>
+                    <a href="#contact" class="nav-link">Kết Nối</a>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    <script>
+        // Chuyển đổi giao diện sáng/tối
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Kiểm tra tùy chọn đã lưu hoặc sử dụng tùy chọn hệ thống
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Chuyển đổi menu di động
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Đóng menu di động khi nhấp vào liên kết
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Cuộn mượt cho tất cả các liên kết
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Thêm hiệu ứng khi các phần tử xuất hiện trong tầm nhìn
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Thiết lập trạng thái ban đầu cho các phần tử có hiệu ứng
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+        });
+        
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.animation = 'slideUp 0.5s ease-out forwards';
+        });
+        
+        // Thêm sự kiện cuộn trang
+        window.addEventListener('scroll', animateOnScroll);
+        // Kích hoạt một lần khi trang tải xong
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
